@@ -1319,6 +1319,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
         if !(self.referenciaText.text?.isEmpty)! {
+            var origen = self.origenText.text.uppercased()
+            origen = origen.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
+            origen = origen.replacingOccurrences(of: "[,.]", with: "-",options: .regularExpression, range: nil)
+            origen = origen.replacingOccurrences(of: "[\n]", with: " ",options: .regularExpression, range: nil)
+            origen = origen.replacingOccurrences(of: "[#]", with: "No",options: .regularExpression, range: nil)
+            origen = origen.folding(options: .diacriticInsensitive, locale: .current)
+            
             self.referenciaText.endEditing(true)
             var referencia = self.referenciaText.text.uppercased()
             referencia = referencia.replacingOccurrences(of: "Ñ", with: "N",options: .regularExpression, range: nil)
@@ -1329,7 +1336,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             mapaVista.clear()
             let nuevaSolicitud = CSolicitud()
             nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-            nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: referencia, dirdestino: "", latorigen: String(Double(origenAnotacion.position.latitude)), lngorigen: String(Double(origenAnotacion.position.longitude)), latdestino: "0", lngdestino: "0",FechaHora: "")
+            nuevaSolicitud.DatosSolicitud(dirorigen: origen, referenciaorigen: referencia, dirdestino: "", latorigen: String(Double(origenAnotacion.position.latitude)), lngorigen: String(Double(origenAnotacion.position.longitude)), latdestino: "0", lngdestino: "0",FechaHora: "")
             self.CrearSolicitud(nuevaSolicitud)
             DibujarIconos([self.origenAnotacion])
             //self.CancelarSolicitudProceso.isHidden = false

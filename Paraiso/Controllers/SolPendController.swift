@@ -377,6 +377,12 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
             DetallesCarreraView.isHidden = false
             self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControlState())
             self.SolicitudPendiente.DibujarRutaSolicitud(mapa: MapaSolPen)
+            
+            var bounds = GMSCoordinateBounds()
+            bounds = bounds.includingCoordinate(self.SolicitudPendiente.origenCarrera.position)
+            bounds = bounds.includingCoordinate(self.SolicitudPendiente.taximarker.position)
+            let update = GMSCameraUpdate.fit(bounds, withPadding: 60)
+            self.MapaSolPen.animate(with: update)
         }
     }
     
