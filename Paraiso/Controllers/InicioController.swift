@@ -37,20 +37,15 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     var taxiscercanos = [GMSMarker]()
     //var SMSVoz = CSMSVoz()
     
-    var responseData = NSMutableData()
-    var data: Data!
+    //Reconect Timer
     var timer = Timer()
-    var fechahora: String!
+
     
     
     var tiempoTemporal = 10
     
-    var taximetro: CTaximetro!
-    var TaximetroTimer = Timer()
-    var TaximetroTotalTimer = Timer()
-    var espera = 0
-    
-    
+    var emitTimer = Timer()
+    var EnviosCount = 0
 
     //variables de interfaz
     
@@ -151,6 +146,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.present(locationAlert, animated: true, completion: nil)
 
         }
+        
          //solicitud de autorización para acceder a la localización del usuario
 
         coreLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -398,6 +394,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.Reconect()
         }
         
+        //PEDIR PERMISO PARA MICROPHONE
         switch AVAudioSession.sharedInstance().recordPermission() {
         case AVAudioSessionRecordPermission.granted:
             print("Permission granted")
@@ -413,6 +410,25 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             })
         default:
             break
+        }
+    }
+    
+    //VERIFICAR PERMISO DE LOCALIZACION
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if (status == CLAuthorizationStatus.denied) || (status == CLAuthorizationStatus.restricted){
+            print("dltototnt")
+            let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
+            locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+                
+            }))
+            locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
+                exit(0)
+            }))
+            self.present(locationAlert, animated: true, completion: nil)
+        } else if (status == CLAuthorizationStatus.authorizedWhenInUse) {
+            // The user accepted authorization
         }
     }
     
@@ -495,6 +511,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         ///Volumes/Datos/Ecuador/Desarrollo/UnTaxi/UnTaxi/LocationManager.swift:635:31: Ambiguous use of 'indexOfObject'
         return upgradeAvailable
     }
+    
     func SocketEventos(){
         //Evento sockect para escuchar
         //TRAMA IN: #LoginPassword,loginok,idusuario,idrol,idcliente,nombreapellidos,cantsolpdte,idsolicitud,idtaxi,cod,fechahora,lattaxi,lngtaxi,latorig,lngorig,latdest,lngdest,telefonoconductor
@@ -503,7 +520,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             let alertaVersion = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. ¿Desea hacerlo en este momento?", preferredStyle: .alert)
             alertaVersion.addAction(UIAlertAction(title: "Si", style: .default, handler: {alerAction in
                 
-                UIApplication.shared.openURL(URL(string: "itms://itunes.apple.com/us/app/apple-store/id1149206387?mt=8")!)
+                UIApplication.shared.openURL(URL(string: "itms://itunes.apple.com/us/app/apple-store/id1193366712?mt=8")!)
             }))
             alertaVersion.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
                 exit(0)
@@ -586,6 +603,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Solicitud"){data, ack in
             //Trama IN: #Solicitud, ok, idsolicitud, fechahora
             //Trama IN: #Solicitud, error
+            self.EnviarTimer(estado: 0, datos: "terminando")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 self.MensajeEspera.text = "Solicitud enviada a todos los taxis cercanos. Esperando respuesta de un conductor."
@@ -857,6 +875,19 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
     }
 
+    //FUNCTION ENVIO CON TIMER
+    func EnviarTimer(estado: Int, datos: String){
+        if estado == 1{
+            self.EnviarSocket(datos)
+            if !self.emitTimer.isValid{
+                self.emitTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+            }
+        }else{
+            self.emitTimer.invalidate()
+            self.EnviosCount = 0
+        }
+    }
+    
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
@@ -869,6 +900,26 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                     exit(0)
                 }))
                 
+                self.present(alertaDos, animated: true, completion: nil)
+            }
+        }else{
+            ErrorConexion()
+        }
+    }
+    
+    @objc func EnviarSocket1(_ timer: Timer){
+        if CConexionInternet.isConnectedToNetwork() == true{
+            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+                self.EnviosCount += 1
+                let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+                var datos = (userInfo["datos"] as! String)
+                myvariables.socket.emit("data",datos)
+            }else{
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    self.EnviarTimer(estado: 0, datos: "Terminado")
+                    exit(0)
+                }))
                 self.present(alertaDos, animated: true, completion: nil)
             }
         }else{
@@ -1183,7 +1234,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         let datossolicitud = nuevaSolicitud.origenCarrera.snippet! + "," + nuevaSolicitud.referenciaorigen + "," + nuevaSolicitud.destinoCarrera.snippet!
         let datosgeo = String(nuevaSolicitud.distancia) + "," + nuevaSolicitud.costo
         let Datos = "#Solicitud" + "," + datoscliente + "," + datossolicitud + "," + String(nuevaSolicitud.origenCarrera.position.latitude) + "," + String(nuevaSolicitud.origenCarrera.position.longitude) + "," + String(nuevaSolicitud.destinoCarrera.position.latitude) + "," + String(nuevaSolicitud.destinoCarrera.position.longitude) + "," + datosgeo + ",# \n"
-        EnviarSocket(Datos)
+        //EnviarSocket(Datos)
+        self.EnviarTimer(estado: 1, datos: Datos)
         MensajeEspera.text = "Procesando..."
         self.AlertaEsperaView.isHidden = false
     }
@@ -1297,25 +1349,6 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         EnviarSocket(datos)
     }
     
-    //Aceptar y Enviar solicitud desde Pantalla de Destino
-    /*@IBAction func AceptarLoc(_ sender: UIButton) {
-        self.DireccionDeCoordenada(mapaVista.camera.target, directionText: origenText)
-        mapaVista.clear()
-        let nuevaSolicitud = CSolicitud()
-        self.destinoAnotacion = GMSMarker(position: mapaVista.camera.target)
-        nuevaSolicitud.DatosCliente(cliente: myvariables.cliente)
-        nuevaSolicitud.destinoCarrera = self.destinoAnotacion
-        nuevaSolicitud.DatosSolicitud(dirorigen: origenText.text!, referenciaorigen: referenciaText.text!, dirdestino: destinoText.text!,  latorigen: String(Double(origenAnotacion.position.latitude)), lngorigen: String(Double(origenAnotacion.position.longitude)), latdestino: String(nuevaSolicitud.destinoCarrera.position.latitude), lngdestino: String(nuevaSolicitud.destinoCarrera.position.longitude),FechaHora: "")
-        nuevaSolicitud.destinoCarrera.snippet = destinoText.text
-        //self.destinoAnotacion = GMSMarker(position: nuevaSolicitud.destinoCarrera.position)
-        self.destinoAnotacion.icon = UIImage(named: "destino")
-        self.formularioSolicitud.isHidden = false
-        ExplicacionView.isHidden = true
-        self.CrearSolicitud(nuevaSolicitud)
-        self.DibujarIconos([self.origenAnotacion, self.destinoAnotacion])
-        nuevaSolicitud.DibujarRutaSolicitud(mapa: mapaVista)
-        //self.CancelarSolicitudProceso.isHidden = false
-    }*/
     //Aceptar y Enviar solicitud desde formulario solicitud
     @IBAction func AceptarSolicitud(_ sender: AnyObject) {
         if !(self.referenciaText.text?.isEmpty)! {

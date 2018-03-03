@@ -264,7 +264,6 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
         myvariables.socket.on("Taxi"){data, ack in
             //"#Taxi,"+nombreconductor+" "+apellidosconductor+","+telefono+","+codigovehiculo+","+gastocombustible+","+marcavehiculo+","+colorvehiculo+","+matriculavehiculo+","+urlfoto+","+idconductor+",# \n";
             let datosConductor = String(describing: data).components(separatedBy: ",")
-            print(datosConductor)
             self.NombreCond.text! = "Conductor: " + datosConductor[1]
             self.MarcaAut.text! = "Marca: " + datosConductor[5]
             self.ColorAut.text! = "Color: " + datosConductor[6]

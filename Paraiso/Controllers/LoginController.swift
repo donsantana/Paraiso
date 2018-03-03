@@ -14,6 +14,9 @@ class LoginController: UIViewController, UITextFieldDelegate{
     var login = [String]()
     var solitudespdtes = [CSolicitud]()
     
+    var EnviosCount = 0
+    var emitTimer = Timer()
+    
     //MARK:- VARIABLES INTERFAZ
     
     @IBOutlet weak var Usuario: UITextField!
@@ -85,6 +88,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
 
     func SocketEventos(){
         myvariables.socket.on("LoginPassword"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if (temporal[0] == "[#LoginPassword") || (temporal[0] == "#LoginPassword"){
                 //self.solpendientes = [CSolicitud]()
@@ -121,6 +125,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         }
         
         myvariables.socket.on("Registro") {data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             
             if temporal[1] == "registrook"{
@@ -148,6 +153,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         
         //RECUPERAR CLAVES
         myvariables.socket.on("Recuperarclave"){data, ack in
+            self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
                 let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
@@ -206,6 +212,17 @@ class LoginController: UIViewController, UITextFieldDelegate{
         EnviarSocket(readString)
     }
 
+    //FUNCTION ENVIO CON TIMER
+    func EnviarTimer(estado: Int, datos: String){
+        if estado == 1{
+            if !self.emitTimer.isValid{
+                self.emitTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(EnviarSocket1(_:)), userInfo: ["datos": datos], repeats: true)
+            }
+        }else{
+            self.emitTimer.invalidate()
+            self.EnviosCount = 0
+        }
+    }
     
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
@@ -213,6 +230,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
             print(myvariables.socket.reconnects)
             if myvariables.socket.reconnects{
                 myvariables.socket.emit("data",datos)
+                self.EnviarTimer(estado: 1, datos: datos)
             }
             else{
                 let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
@@ -224,6 +242,26 @@ class LoginController: UIViewController, UITextFieldDelegate{
             }
         }else{
             self.ErrorConexion()
+        }
+    }
+    
+    @objc func EnviarSocket1(_ timer: Timer){
+        if CConexionInternet.isConnectedToNetwork() == true{
+            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+                self.EnviosCount += 1
+                let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+                var datos: String = (userInfo["datos"] as! String)
+                myvariables.socket.emit("data",datos)
+                //let result = myvariables.socket.emitWithAck("data", datos)
+            }else{
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
+                    exit(0)
+                }))
+                self.present(alertaDos, animated: true, completion: nil)
+            }
+        }else{
+            ErrorConexion()
         }
     }
     
