@@ -67,7 +67,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
         
         
         //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.normalTap))
-        let longGesture = UILongPressGestureRecognizer(target: self, action: "longTap:")
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(SolPendController.longTap(_:)))
         longGesture.minimumPressDuration = 0.5
         //tapGesture.numberOfTapsRequired = 1
         //self.SMSVozBtn.addGestureRecognizer(tapGesture)
@@ -289,12 +289,12 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
         myvariables.socket.on("V"){data, ack in
 
             self.MensajesBtn.isHidden = false
-            self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControlState())
+            self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
         }
         
         if myvariables.urlconductor != ""{
             self.MensajesBtn.isHidden = false
-            self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControlState())
+            self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
         }
         
         self.MostrarDetalleSolicitud()
@@ -303,7 +303,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
     
     
     //MASK:- FUNCIONES PROPIAS
-    func longTap(_ sender : UILongPressGestureRecognizer){
+    @objc func longTap(_ sender : UILongPressGestureRecognizer){
       if sender.state == .ended {
         if !myvariables.SMSVoz.reproduciendo && myvariables.grabando{
             self.SMSVozBtn.setImage(UIImage(named: "smsvoz"), for: .normal)
@@ -341,7 +341,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
                 myvariables.socket.emit("data",datos)
                 print(datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -354,7 +354,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
     }
 
     func ErrorConexion(){
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -374,8 +374,8 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
             DistanciaText.text = temporal[0] + " KM"
             DuracionText.text = temporal[1]
             DetallesCarreraView.isHidden = false
-            self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControlState())
-            self.SolicitudPendiente.DibujarRutaSolicitud(mapa: MapaSolPen)
+            self.SMSVozBtn.setImage(UIImage(named:"smsvoz"),for: UIControl.State())
+            //self.SolicitudPendiente.DibujarRutaSolicitud(mapa: MapaSolPen)
             
             var bounds = GMSCoordinateBounds()
             bounds = bounds.includingCoordinate(self.SolicitudPendiente.origenCarrera.position)
@@ -387,7 +387,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
     
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
-        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
                 self.CancelarSolicitud("No necesito")
@@ -408,7 +408,7 @@ class SolPendController: UIViewController, GMSMapViewDelegate, UITextViewDelegat
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             self.CancelarSolicitud("Solo probaba el servicio")
         }))
-        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
+        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
         }))
         
         self.present(motivoAlerta, animated: true, completion: nil)

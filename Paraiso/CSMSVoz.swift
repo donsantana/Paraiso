@@ -49,8 +49,13 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
             AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
                 if granted {
                     //set category and activate recorder session
-                    try! self.recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-                    try! self.recordingSession.setActive(true)
+                    if #available(iOS 10.0, *) {
+                        try! self.recordingSession.setCategory(AVAudioSession.Category.playAndRecord, mode: .measurement, options: .defaultToSpeaker)
+                        try! self.recordingSession.setActive(true)
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    //try! self.recordingSession.setActive(true)
                     
                     let recordSettings = [AVSampleRateKey : NSNumber(value: Float(8000.0) as Float),
                         AVFormatIDKey : NSNumber(value: Int32(kAudioFormatMPEG4AAC) as Int32),
@@ -59,10 +64,17 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
                     
                     let audioSession = AVAudioSession.sharedInstance()
                     do {
-                        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-                        try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
+                        if #available(iOS 10.0, *) {
+                            try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: .measurement, options: .defaultToSpeaker)
+                            try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
+                                                                     settings: recordSettings)
+                            self.audioRecorder.prepareToRecord()
+                        } else {
+                            // Fallback on earlier versions
+                        }
+                        /*try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
                             settings: recordSettings)
-                        self.audioRecorder.prepareToRecord()
+                        self.audioRecorder.prepareToRecord()*/
                     } catch {
                         
                     }
@@ -215,6 +227,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         request.httpBody = body as Data
         
         let session = URLSession.shared
+        print("session \(session)")
         let task : URLSessionTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             let dataStr = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
         })
@@ -228,3 +241,8 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     }
 }
     
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
+}

@@ -355,8 +355,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         self.SolPendientesBtn.frame = CGRect(x: (espacioBtn * 2 - 25), y: 5, width: 44, height: 44)
         //self.TarifarioBtn.frame = CGRect(x: (espacioBtn * 3 - 15), y: 5, width: 44, height: 44)
         self.MapaBtn.frame = CGRect(x: (espacioBtn * 3 - 10), y: 5, width: 44, height: 44)
-        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
-        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
+        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2 - 2), y: 5, width: 25, height: 22)
+        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2 - 2), y: 5, width: 25, height: 22)
 
         self.userAnotacion = GMSMarker()
         self.taxiLocation = GMSMarker()
@@ -395,12 +395,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         //PEDIR PERMISO PARA MICROPHONE
-        switch AVAudioSession.sharedInstance().recordPermission() {
-        case AVAudioSessionRecordPermission.granted:
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
             print("Permission granted")
-        case AVAudioSessionRecordPermission.denied:
+        case AVAudioSession.RecordPermission.denied:
             print("Pemission denied")
-        case AVAudioSessionRecordPermission.undetermined:
+        case AVAudioSession.RecordPermission.undetermined:
             AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
                 if granted {
                     
@@ -420,7 +420,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             print("dltototnt")
             let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
             locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+                UIApplication.shared.openURL(NSURL(string:UIApplication.openSettingsURLString)! as URL)
                 
             }))
             locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
@@ -559,13 +559,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                         
                     }
                     
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
                     self.present(alertaDos, animated: true, completion: nil)
                 case "version":
-                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
@@ -587,7 +587,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             //self.MensajeEspera.text = String(temporal)
             //self.AlertaEsperaView.hidden = false
             if(temporal[1] == "0") {
-                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
+                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertController.Style.alert )
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.Inicio()
                 }))
@@ -658,7 +658,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Cancelarsolicitud"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     if myvariables.solpendientes.count != 0{
                         self.SolPendientesView.isHidden = true
@@ -719,7 +719,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         
         myvariables.socket.on("Cambioestadosolicitudconductor"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
-            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 var pos = -1
                 pos = self.BuscarPosSolicitudID(temporal[1])
@@ -738,7 +738,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             if myvariables.solpendientes.count != 0{
                 for solicitudenproceso in myvariables.solpendientes{
                     if solicitudenproceso.idSolicitud == temporal[1]{
-                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                             self.CancelarSolicitudes("")
                         }))
@@ -823,7 +823,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Recuperarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
                 
@@ -840,7 +840,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         myvariables.socket.on("Cambiarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
                 }))
@@ -848,7 +848,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.present(alertaDos, animated: true, completion: nil)
                 
             }else{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
                 }))
@@ -866,7 +866,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             contador += 1
         }
         else{
-            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 exit(0)
             }))
@@ -890,12 +890,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
+        
         if CConexionInternet.isConnectedToNetwork() == true{
             if myvariables.socket.reconnects{
                 myvariables.socket.emit("data",datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -908,6 +909,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     }
     
     @objc func EnviarSocket1(_ timer: Timer){
+       
         if CConexionInternet.isConnectedToNetwork() == true{
             if myvariables.socket.reconnects && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
@@ -915,7 +917,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 var datos = (userInfo["datos"] as! String)
                 myvariables.socket.emit("data",datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.EnviarTimer(estado: 0, datos: "Terminado")
                     exit(0)
@@ -1158,7 +1160,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         //self.CargarTelefonos()
         //AlertaSinConexion.isHidden = false
         
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -1269,7 +1271,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
-        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
                 self.CancelarSolicitudes("No necesito")
@@ -1299,7 +1301,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
                 self.CancelarSolicitudes("Solo probaba el servicio")
 
         }))
-        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
+        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
         }))
         self.present(motivoAlerta, animated: true, completion: nil)
     }

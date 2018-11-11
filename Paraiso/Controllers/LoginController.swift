@@ -56,7 +56,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         
         if CConexionInternet.isConnectedToNetwork() == true{
            
-            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://108.179.202.211:6016")!, config: [.log(false), .forcePolling(true)])
+            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://173.249.14.205:6017")!, config: [.log(false), .forcePolling(true)])
             myvariables.socket.connect()
             print("Tratando de conectar")
 
@@ -111,7 +111,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
                         
                     }
                     
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         self.AutenticandoView.isHidden = true
                     }))
@@ -142,7 +142,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
             }
             else{
                 
-                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Error al registrar el usuario: \(temporal[2])", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.AutenticandoView.isHidden = true
                 }))
@@ -156,7 +156,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
             self.EnviarTimer(estado: 0, datos: "Terminado")
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
                 
@@ -233,7 +233,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 self.EnviarTimer(estado: 1, datos: datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -254,7 +254,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
                 myvariables.socket.emit("data",datos)
                 //let result = myvariables.socket.emitWithAck("data", datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -266,7 +266,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     }
     
     func ErrorConexion(){
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -319,7 +319,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     }
     @IBAction func EnviarRegistro(_ sender: AnyObject) {
         if (nombreApText.text!.isEmpty || telefonoText.text!.isEmpty || claveText.text!.isEmpty) {
-            let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Registro de Usuario", message: "Debe llenar todos los campos del formulario", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 
             }))

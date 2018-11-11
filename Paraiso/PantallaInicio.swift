@@ -269,7 +269,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         //self.CargarTelefonos()
         //AlertaSinConexion.isHidden = false
         
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -280,7 +280,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         let alertContentView = subview.subviews.last! as UIView
         alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
         alertContentView.layer.cornerRadius = 5
-        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
         alertaDos.setValue(TitleString, forKey: "attributedTitle")
         //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
         
@@ -305,7 +305,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             let alertContentView = subview.subviews.last! as UIView
             alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
             alertContentView.layer.cornerRadius = 5
-            let TitleString = NSAttributedString(string: "Autenticación", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+            let TitleString = NSAttributedString(string: "Autenticación", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
             alertaVersion.setValue(TitleString, forKey: "attributedTitle")
             //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
             self.present(alertaVersion, animated: true, completion: nil)
@@ -342,7 +342,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                         
                     }
                     
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                        
                     }))
@@ -353,12 +353,12 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                     let alertContentView = subview.subviews.last! as UIView
                     alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                     alertContentView.layer.cornerRadius = 5
-                    let TitleString = NSAttributedString(string: "Autenticación", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                    let TitleString = NSAttributedString(string: "Autenticación", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                     alertaDos.setValue(TitleString, forKey: "attributedTitle")
                     //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                     self.present(alertaDos, animated: true, completion: nil)
                 case "version":
-                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
@@ -371,7 +371,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                     let alertContentView = subview.subviews.last! as UIView
                     alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                     alertContentView.layer.cornerRadius = 5
-                    let TitleString = NSAttributedString(string: "Autenticación", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                    let TitleString = NSAttributedString(string: "Autenticación", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                     alertaDos.setValue(TitleString, forKey: "attributedTitle")
                     //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                     self.present(alertaDos, animated: true, completion: nil)
@@ -416,7 +416,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             //self.MensajeEspera.text = String(temporal)
             //self.AlertaEsperaView.hidden = false
             if(temporal[1] == "0") {
-                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
+                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertController.Style.alert )
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.Inicio()
                 }))
@@ -427,7 +427,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Solicitud de Taxi", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Solicitud de Taxi", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
 
@@ -452,7 +452,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             if datosConductor[9] != "null" && datosConductor[9] != ""{
                 URLSession.shared.dataTask(with: URL(string: datosConductor[9])!, completionHandler: { (data, response, error) in
                     DispatchQueue.main.async {
-                        _ = UIViewContentMode.scaleAspectFill
+                        _ = UIView.ContentMode.scaleAspectFill
                         self.ImagenCond.image = UIImage(data: data!)
                     }
                 }) 
@@ -502,7 +502,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         myvariables.socket.on("Cancelarsolicitud"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     if self.solpendientes.count != 0{
                         self.TablaSolPendientes.isHidden = true
@@ -521,7 +521,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cancelar Solicitud", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cancelar Solicitud", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
 
@@ -566,7 +566,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                         let alertContentView = subview.subviews.last! as UIView
                         alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                         alertContentView.layer.cornerRadius = 5
-                        let TitleString = NSAttributedString(string: "Solicitud Aceptada", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                        let TitleString = NSAttributedString(string: "Solicitud Aceptada", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                         alertaDos.setValue(TitleString, forKey: "attributedTitle")
                         self.present(alertaDos, animated: true, completion: nil)
                     }
@@ -587,7 +587,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                     let alertContentView = subview.subviews.last! as UIView
                     alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                     alertContentView.layer.cornerRadius = 5
-                    let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                    let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                     alertaDos.setValue(TitleString, forKey: "attributedTitle")
                     //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
 
@@ -599,7 +599,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         
         myvariables.socket.on("Cambioestadosolicitudconductor"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
-            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 var pos = -1
                 pos = self.BuscarPosSolicitudID(temporal[1])
@@ -614,7 +614,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             let alertContentView = subview.subviews.last! as UIView
             alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
             alertContentView.layer.cornerRadius = 5
-            let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+            let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
             alertaDos.setValue(TitleString, forKey: "attributedTitle")
             //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
 
@@ -626,7 +626,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             if self.solpendientes.count != 0{
                 for solicitudenproceso in self.solpendientes{
                     if solicitudenproceso.idSolicitud == temporal[1]{
-                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                             self.CancelarSolicitudes(self.BuscarPosSolicitudID(temporal[1]), motivo: "")
                         }))
@@ -637,7 +637,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                         let alertContentView = subview.subviews.last! as UIView
                         alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                         alertContentView.layer.cornerRadius = 5
-                        let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                        let TitleString = NSAttributedString(string: "Estado de Solicitud", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                         alertaDos.setValue(TitleString, forKey: "attributedTitle")
                         //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                         
@@ -658,7 +658,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             self.urlconductor = String()
             let temporal = String(describing: data).components(separatedBy: ",")
                 self.urlconductor = temporal[1]
-                self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControlState())
+                self.MensajesBtn.setImage(UIImage(named: "mensajesnew"),for: UIControl.State())
                 self.MensajesBtn.isHidden = false
                 self.SMSVoz.ReproducirMusica()
                 if !self.grabando{
@@ -691,7 +691,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         myvariables.socket.on("Recuperarclave"){data, ack in
          let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
                 
@@ -701,7 +701,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Recuperación de clave", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Recuperación de clave", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
@@ -719,7 +719,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         myvariables.socket.on("Cambiarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.FondoClaveView.isHidden = true
                 }))
@@ -730,14 +730,14 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
                 self.present(alertaDos, animated: true, completion: nil)
                 
             }else{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.FondoClaveView.isHidden = true
                 }))
@@ -748,7 +748,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 self.present(alertaDos, animated: true, completion: nil)
@@ -877,13 +877,13 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
     }
     
     //RECONECT SOCKET
-    func Reconect(){
+    @objc func Reconect(){
         if contador <= 5 {
             myvariables.socket.connect()
             contador += 1
         }
         else{
-            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 exit(0)
             }))
@@ -894,7 +894,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
             let alertContentView = subview.subviews.last! as UIView
             alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
             alertContentView.layer.cornerRadius = 5
-            let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+            let TitleString = NSAttributedString(string: "Sin Conexión", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
             alertaDos.setValue(TitleString, forKey: "attributedTitle")
 
             self.present(alertaDos, animated: true, completion: nil)
@@ -948,7 +948,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 myvariables.socket.emit("data",datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -959,7 +959,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
@@ -1126,7 +1126,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         if temporal[5] != "null" && temporal[5] != ""{
             URLSession.shared.dataTask(with: URL(string: temporal[5])!, completionHandler: { (data, response, error) in
                 DispatchQueue.main.async {
-                    _ = UIViewContentMode.scaleAspectFill
+                    _ = UIView.ContentMode.scaleAspectFill
                     self.ImagenCond.image = UIImage(data: data!)
                 }
             }) 
@@ -1162,7 +1162,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
     }
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
-        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
             if self.AlertaEsperaView.isHidden == false{
@@ -1208,7 +1208,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
                 self.CancelarSolicitudes(self.indexselect, motivo: "Solo probaba el servicio")
             }
         }))
-        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
+        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
         }))
         
         motivoAlerta.view.tintColor = UIColor.black
@@ -1712,7 +1712,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         self.fechahora = dateFormato.string(from: Date())
         let name = solpendientes[self.indexselect].idSolicitud + "-" + solpendientes[self.indexselect].idTaxi + "-" + fechahora + ".m4a"
         SMSVoz.TerminarMensaje(name)
-        self.SMSVozBtn.setImage(UIImage(named:"smsvoz2"), for: UIControlState())
+        self.SMSVozBtn.setImage(UIImage(named:"smsvoz2"), for: UIControl.State())
         SMSVoz.ReproducirMusica()
         SMSVoz.SubirAudio(self.UrlSubirVoz, name: name)
         grabando = false
@@ -2055,7 +2055,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
     }
     
     //DETENER TAXIMETRO
-    func StopTaximetroFunction(){
+    @objc func StopTaximetroFunction(){
         self.TaximetroTimer.invalidate()
         self.TaximetroTotalTimer.invalidate()
         myvariables.taximetroActive = false
@@ -2064,7 +2064,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         self.AlertaTaximetroView.isHidden = true
         
     }
-    func ActualizarTiempoEspera(){
+    @objc func ActualizarTiempoEspera(){
 
         var speed: CLLocationSpeed = CLLocationSpeed()
         speed = coreLocationManager.location!.speed
@@ -2079,9 +2079,20 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
         self.ApagarText.text = "$ " + String(format:"%.2f", self.taximetro.ValorPagar)
         
     }
-    func ActualizarTiempoTotal(){
+    @objc func ActualizarTiempoTotal(){
         let tiempocarrera = taximetro.ActualizaTiempoTotal()
         self.TaximetroSpeedText.text = String(format: "%02d", tiempocarrera[2]) + ":" + String(format: "%02d", tiempocarrera[1]) + ":" + String(format: "%02d", tiempocarrera[0])
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

@@ -34,11 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDelegate, URLSe
 
     var window: UIWindow?
     
-    var backgrounTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    var backgrounTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     var myTimer: Timer?
     var BackgroundSeconds = 0
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey("AIzaSyBx3NaenFrNxM4JOFGJvjYjQAL-XeTkRUc")
         application.isIdleTimerDisabled = true
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDelegate, URLSe
         return UIDevice.current.isMultitaskingSupported
     }
     
-    func TimerMethod(sender: Timer){
+    @objc func TimerMethod(sender: Timer){
         
         let backgroundTimeRemaining = UIApplication.shared.backgroundTimeRemaining
         if backgroundTimeRemaining == DBL_MAX{
@@ -104,14 +104,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDelegate, URLSe
         if let timer = self.myTimer{
             timer.invalidate()
             self.myTimer = nil
-            UIApplication.shared.endBackgroundTask(self.backgrounTaskIdentifier)
-            self.backgrounTaskIdentifier = UIBackgroundTaskInvalid
+            UIApplication.shared.endBackgroundTask(convertToUIBackgroundTaskIdentifier(self.backgrounTaskIdentifier.rawValue))
+            self.backgrounTaskIdentifier = UIBackgroundTaskIdentifier.invalid
         }
         
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        if backgrounTaskIdentifier != UIBackgroundTaskInvalid{
+        if backgrounTaskIdentifier != UIBackgroundTaskIdentifier.invalid{
             if myvariables.urlconductor != ""{
                 myvariables.SMSVoz.ReproducirMusica()
                 myvariables.SMSVoz.ReproducirVozConductor(myvariables.urlconductor)
@@ -120,8 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDelegate, URLSe
                 timer.invalidate()
                 self.myTimer = nil
                 BackgroundSeconds = 0
-                UIApplication.shared.endBackgroundTask(self.backgrounTaskIdentifier)
-                self.backgrounTaskIdentifier = UIBackgroundTaskInvalid
+                UIApplication.shared.endBackgroundTask(convertToUIBackgroundTaskIdentifier(self.backgrounTaskIdentifier.rawValue))
+                self.backgrounTaskIdentifier = UIBackgroundTaskIdentifier.invalid
             }
         }
         
@@ -140,3 +140,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, URLSessionDelegate, URLSe
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIBackgroundTaskIdentifier(_ input: Int) -> UIBackgroundTaskIdentifier {
+	return UIBackgroundTaskIdentifier(rawValue: input)
+}

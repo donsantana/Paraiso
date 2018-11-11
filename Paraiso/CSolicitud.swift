@@ -178,10 +178,11 @@ class CSolicitud {
     }
     
     func TiempoTaxi()->[String]{
-        let origenCoord = String(self.origenCarrera.position.latitude) + "," + String(origenCarrera.position.longitude)
-        let taxi = String(taximarker.position.latitude) + "," + String(taximarker.position.longitude)
-        let ruta = CRuta(origin: origenCoord, destination: taxi)
-        return [ruta.totalDistance,ruta.totalDuration]
+        
+        let origenLocation: CLLocation = CLLocation(latitude: self.origenCarrera.position.latitude, longitude: self.origenCarrera.position.longitude)
+        let destinoLocation: CLLocation = CLLocation(latitude: self.taximarker.position.latitude, longitude: self.taximarker.position.longitude)
+        let distance = String(format:"%.2f", origenLocation.distance(from: destinoLocation) / 1000)
+        return [distance,"0"]
     }
 
 }

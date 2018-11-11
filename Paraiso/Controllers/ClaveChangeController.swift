@@ -37,7 +37,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
         myvariables.socket.on("Cambiarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
                 }))
@@ -48,14 +48,14 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
                 self.present(alertaDos, animated: true, completion: nil)
                 
             }else{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.ClaveActual.text?.removeAll()
                     self.ClaveNueva.text?.removeAll()
@@ -68,7 +68,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Cambio de clave", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 self.present(alertaDos, animated: true, completion: nil)
@@ -84,7 +84,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 myvariables.socket.emit("data",datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -95,7 +95,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
                 let alertContentView = subview.subviews.last! as UIView
                 alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
                 alertContentView.layer.cornerRadius = 5
-                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+                let TitleString = NSAttributedString(string: "Sin Conexión", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
                 alertaDos.setValue(TitleString, forKey: "attributedTitle")
                 //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
                 
@@ -110,7 +110,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
         //self.CargarTelefonos()
         //AlertaSinConexion.isHidden = false
         
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -121,7 +121,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
         let alertContentView = subview.subviews.last! as UIView
         alertContentView.backgroundColor = UIColor(red: 252.0/255.0, green: 238.0/255.0, blue: 129.0/255.0, alpha: 1.0)
         alertContentView.layer.cornerRadius = 5
-        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 19), NSForegroundColorAttributeName : UIColor.black])
+        let TitleString = NSAttributedString(string: "Sin Conexión", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont.systemFont(ofSize: 19), convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.black]))
         alertaDos.setValue(TitleString, forKey: "attributedTitle")
         //let MessageString = NSAttributedString(string: Message, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(15), NSForegroundColorAttributeName : MessageColor])
         
@@ -132,7 +132,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
 
     @IBAction func EnviarCambioClave(_ sender: AnyObject) {
         // #Cambiarclave,idusuario,claveold,clavenew
-        let datos = "#Cambiarclave," + myvariables.cliente.idUsuario + "," + ClaveActual.text! + "," + ClaveNueva.text! + ",# \n"
+        let datos = "#Cambiarclave,\(myvariables.cliente.idUsuario),\(ClaveActual.text!),\(ClaveNueva.text!),# \n"
         EnviarSocket(datos)
         self.ClaveActual.endEditing(true)
         self.ClaveNueva.endEditing(true)
@@ -188,7 +188,7 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.isEqual(self.RepiteClaveNueva){
-            let datos = "#Cambiarclave," + myvariables.cliente.idUsuario + "," + ClaveActual.text! + "," + ClaveNueva.text! + ",# \n"
+            let datos = "#Cambiarclave,\(myvariables.cliente.idUsuario),\(ClaveActual.text!),\(ClaveNueva.text!),# \n"
             EnviarSocket(datos)
         }
        textField.endEditing(true)
@@ -207,4 +207,15 @@ class ClaveChangeController: UIViewController, UITextFieldDelegate {
 
 
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }
