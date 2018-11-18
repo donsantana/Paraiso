@@ -40,11 +40,10 @@ class CBackSMS: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, UR
             let session = AVAudioSession.sharedInstance()
             if #available(iOS 10.0, *) {
                 try session.setCategory(.playAndRecord, mode: .default)
-                try session.setActive(true)
             } else {
-                // Fallback on earlier versions
+                session.perform(NSSelectorFromString("setCategory:withOptions:error:"), with: AVAudioSession.Category.playback.rawValue, with:  [])
             }
-            
+            try session.setActive(true)
         }catch{
             print("Problem")
         }

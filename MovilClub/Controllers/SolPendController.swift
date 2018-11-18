@@ -16,7 +16,6 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
     var posicionSolicitud: Int!
     var OrigenSolicitud = MKPointAnnotation()
     var TaxiSolicitud = MKPointAnnotation()
-    
     var evaluacion: CEvaluacion!
     var grabando = false
     var fechahora: String!
@@ -74,7 +73,10 @@ class SolPendController: UIViewController, MKMapViewDelegate, UITextViewDelegate
             if datosConductor[8] != "null" && datosConductor[8] != ""{
                 let url = URL(string:datosConductor[8])
                 let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                    guard let data = data, error == nil else { return }
+
+                    guard let data = data, error == nil else {
+                        return
+                    }
                     DispatchQueue.main.sync() {
                         self.ImagenCond.image = UIImage(data: data)
                     }

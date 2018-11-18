@@ -67,13 +67,13 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
                     let audioSession = AVAudioSession.sharedInstance()
                     do {
                         if #available(iOS 10.0, *) {
-                            try audioSession.setCategory(.playAndRecord, mode: .default)
-                            try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
-                                                                     settings: recordSettings)
-                            self.audioRecorder.prepareToRecord()
+                            try audioSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
                         } else {
-                            // Fallback on earlier versions
+                            audioSession.perform(NSSelectorFromString("setCategory:withOptions:error:"), with: AVAudioSession.Category.playAndRecord)
+                            try audioSession.overrideOutputAudioPort(.speaker)
                         }
+                        try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,settings: recordSettings)
+                        self.audioRecorder.prepareToRecord()
                     } catch {
                         
                     }
@@ -149,6 +149,8 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         if (!audioRecorder.isRecording){
             do {
                 try myAudioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
+    
+                myAudioPlayer.prepareToPlay()
                 myAudioPlayer.volume = 1
                 myAudioPlayer.play()
             } catch {
