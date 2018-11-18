@@ -1,51 +1,45 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - Canvas (0.1.2)
-  - MaterialComponents/AnimationTiming (38.1.1)
-  - MaterialComponents/Palettes (38.1.1)
-  - MaterialComponents/private/Application (38.1.1)
-  - MaterialComponents/private/Math (38.1.1)
-  - MaterialComponents/TextFields (38.1.1):
-    - MaterialComponents/TextFields/ColorThemer (= 38.1.1)
-    - MaterialComponents/TextFields/Component (= 38.1.1)
-  - MaterialComponents/TextFields/ColorThemer (38.1.1):
-    - MaterialComponents/TextFields/Component
-    - MaterialComponents/Themes
-  - MaterialComponents/TextFields/Component (38.1.1):
+  - MaterialComponents/AnimationTiming (68.2.0)
+  - MaterialComponents/Palettes (68.2.0)
+  - MaterialComponents/private/Application (68.2.0)
+  - MaterialComponents/private/Math (68.2.0)
+  - MaterialComponents/TextFields (68.2.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Palettes
     - MaterialComponents/private/Math
     - MaterialComponents/Typography
     - MDFInternationalization
-  - MaterialComponents/Themes (38.1.1)
-  - MaterialComponents/Typography (38.1.1):
+  - MaterialComponents/Typography (68.2.0):
     - MaterialComponents/private/Application
-  - MDFInternationalization (1.0.2)
-  - Socket.IO-Client-Swift (11.1.3):
-    - StarscreamSocketIO (~> 8.0.5)
-  - StarscreamSocketIO (8.0.7)
-  - SwiftyJSON (3.1.3)
-  - TextFieldEffects (1.4.0)
+    - MaterialComponents/private/Math
+  - MDFInternationalization (1.1.0)
+  - Socket.IO-Client-Swift (13.3.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
+  - SwiftyJSON (4.2.0)
+  - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
   - AFNetworking
   - Canvas
   - MaterialComponents/TextFields
-  - Socket.IO-Client-Swift (~> 11.1.3)
+  - Socket.IO-Client-Swift
   - SwiftyJSON
   - TextFieldEffects
 
@@ -56,20 +50,20 @@ SPEC REPOS:
     - MaterialComponents
     - MDFInternationalization
     - Socket.IO-Client-Swift
-    - StarscreamSocketIO
+    - Starscream
     - SwiftyJSON
     - TextFieldEffects
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
-  MaterialComponents: 246309fe020b2782255df4b9e3b485cd65da1f4f
-  MDFInternationalization: 51b5f3889aca8bc13385e9a6c363eb0b0f257cf9
-  Socket.IO-Client-Swift: b8e59ddc16bc3609ca2f49a4b50253f095d535c8
-  StarscreamSocketIO: 00b54e4208481ca5cef089545353aaf126bae16d
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
-  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
+  MaterialComponents: 0a6202cdfab416518d065eaea869efea2126b605
+  MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
+  Socket.IO-Client-Swift: 79f8f85fa44881838175a20f9bd2c32bef2c9d37
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 70dcf9dd648f959d96ff6c211ee5e47db3aa6903
+PODFILE CHECKSUM: 50014685e3786b23111bf2b82d89b51be762be05
 
 COCOAPODS: 1.6.0.beta.1

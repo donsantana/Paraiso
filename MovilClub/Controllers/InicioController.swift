@@ -139,8 +139,8 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         self.CallCEnterBtn.frame = CGRect(x: espacioBtn - 40, y: 5, width: 44, height: 44)
         self.SolPendientesBtn.frame = CGRect(x: (espacioBtn * 2 - 25), y: 5, width: 44, height: 44)
         self.MapaBtn.frame = CGRect(x: (espacioBtn * 3 - 10), y: 5, width: 44, height: 44)
-        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
-        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2 - 10), y: 5, width: 25, height: 22)
+        self.SolPendImage.frame = CGRect(x: (espacioBtn * 2 - 2), y: 5, width: 25, height: 22)
+        self.CantSolPendientes.frame = CGRect(x: (espacioBtn * 2 - 2), y: 5, width: 25, height: 22)
 
         
         if myvariables.solpendientes.count > 0{
@@ -149,7 +149,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
             self.SolPendImage.isHidden = false
         }
         
-        if myvariables.socket.reconnects{
+        if myvariables.socket.status.active{
             let ColaHilos = OperationQueue()
             let Hilos : BlockOperation = BlockOperation ( block: {
                 self.SocketEventos()
@@ -172,12 +172,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         }
         
         //PEDIR PERMISO PARA MICROPHONE
-        switch AVAudioSession.sharedInstance().recordPermission() {
-        case AVAudioSessionRecordPermission.granted:
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
             print("Permission granted")
-        case AVAudioSessionRecordPermission.denied:
+        case AVAudioSession.RecordPermission.denied:
             print("Pemission denied")
-        case AVAudioSessionRecordPermission.undetermined:
+        case AVAudioSession.RecordPermission.undetermined:
             AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
                 if granted {
                     
@@ -197,7 +197,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
             print("dltototnt")
             let locationAlert = UIAlertController (title: "Error de Localización", message: "Estimado cliente es necesario que active la localización de su dispositivo.", preferredStyle: .alert)
             locationAlert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                UIApplication.shared.openURL(NSURL(string:UIApplicationOpenSettingsURLString)! as URL)
+                UIApplication.shared.openURL(NSURL(string:UIApplication.openSettingsURLString)! as URL)
                 
             }))
             locationAlert.addAction(UIAlertAction(title: "No", style: .default, handler: {alerAction in
@@ -225,7 +225,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.miposicion.coordinate = (locations.last?.coordinate)!
         self.mapaVista.addAnnotation(self.miposicion)
-        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: self.miposicion.coordinate, span: span)
         self.mapaVista.setRegion(region, animated: true)
         self.SolicitarBtn.isHidden = false
@@ -341,13 +341,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
                         
                     }
                     
-                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Autenticación", message: "Usuario y/o clave incorrectos", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
                     self.present(alertaDos, animated: true, completion: nil)
                 case "version":
-                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertaDos = UIAlertController (title: "Versión de la aplicación", message: "Estimado cliente es necesario que actualice a la última versión de la aplicación disponible en la AppStore. Desea hacerlo en este momento:", preferredStyle: UIAlertController.Style.alert)
                     alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                         
                     }))
@@ -369,7 +369,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
             //self.MensajeEspera.text = String(temporal)
             //self.AlertaEsperaView.hidden = false
             if(temporal[1] == "0") {
-                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertControllerStyle.alert )
+                let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertController.Style.alert )
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.formularioSolicitud.isHidden = true
                     self.Inicio()
@@ -422,7 +422,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         myvariables.socket.on("Cancelarsolicitud"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cancelar Solicitud", message: "Su solicitud fue cancelada.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     if myvariables.solpendientes.count != 0{
                         self.SolPendientesView.isHidden = true
@@ -505,7 +505,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         
         myvariables.socket.on("Cambioestadosolicitudconductor"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
-            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "Solicitud cancelada por el conductor.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 var pos = -1
                 pos = self.BuscarPosSolicitudID(temporal[1])
@@ -524,7 +524,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
             if myvariables.solpendientes.count != 0{
                 for solicitudenproceso in myvariables.solpendientes{
                     if solicitudenproceso.idSolicitud == temporal[1]{
-                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                        let alertaDos = UIAlertController (title: "Estado de Solicitud", message: "No se encontó ningún taxi disponible para ejecutar su solicitud. Por favor inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                             self.CancelarSolicitudes("")
                         }))
@@ -606,7 +606,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         myvariables.socket.on("Recuperarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Recuperación de clave", message: "Su clave ha sido recuperada satisfactoriamente, en este momento ha recibido un correo electronico a la dirección: " + temporal[2], preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 }))
                 
@@ -623,7 +623,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         myvariables.socket.on("Cambiarclave"){data, ack in
             let temporal = String(describing: data).components(separatedBy: ",")
             if temporal[1] == "ok"{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Su clave ha sido cambiada satisfactoriamente", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
                 }))
@@ -631,7 +631,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
                 self.present(alertaDos, animated: true, completion: nil)
                 
             }else{
-                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Cambio de clave", message: "Se produjo un error al cambiar su clave. Revise la información ingresada e inténtelo más tarde.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
 
                 }))
@@ -643,13 +643,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     }
     
     //RECONECT SOCKET
-    func Reconect(){
+    @objc func Reconect(){
         if contador <= 5 {
             myvariables.socket.connect()
             contador += 1
         }
         else{
-            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+            let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
             alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                 exit(0)
             }))
@@ -675,12 +675,12 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     func EnviarSocket(_ datos: String){
         
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 print(datos)
                 myvariables.socket.emit("data",datos)
             }
             else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     exit(0)
                 }))
@@ -695,13 +695,13 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     @objc func EnviarSocket1(_ timer: Timer){
        
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+            if myvariables.socket.status.active && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
                 var datos = (userInfo["datos"] as! String)
                 myvariables.socket.emit("data",datos)
             }else{
-                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor intentar otra vez.", preferredStyle: UIAlertController.Style.alert)
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
                     self.EnviarTimer(estado: 0, datos: "Terminado")
                     exit(0)
@@ -720,7 +720,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         self.origenIcono.image = UIImage(named: "origen2")
         self.origenIcono.isHidden = true
         self.origenAnotacion.title = "origen"
-        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: self.origenAnotacion.coordinate, span: span)
         self.mapaVista.setRegion(region, animated: true)
         self.mapaVista.addAnnotation(self.origenAnotacion)
@@ -842,7 +842,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         //self.CargarTelefonos()
         //AlertaSinConexion.isHidden = false
         
-        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertaDos = UIAlertController (title: "Sin Conexión", message: "No se puede conectar al servidor por favor revise su conexión a Internet.", preferredStyle: UIAlertController.Style.alert)
         alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
             exit(0)
         }))
@@ -882,7 +882,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
     
     //CANCELAR SOLICITUDES
     func MostrarMotivoCancelacion(){
-        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let motivoAlerta = UIAlertController(title: "", message: "Seleccione el motivo de cancelación.", preferredStyle: UIAlertController.Style.actionSheet)
         motivoAlerta.addAction(UIAlertAction(title: "No necesito", style: .default, handler: { action in
             //["No necesito","Demora el servicio","Tarifa incorrecta","Solo probaba el servicio", "Cancelar"]
                 self.CancelarSolicitudes("No necesito")
@@ -912,7 +912,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
                 self.CancelarSolicitudes("Solo probaba el servicio")
 
         }))
-        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.destructive, handler: { action in
+        motivoAlerta.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.destructive, handler: { action in
         }))
         self.present(motivoAlerta, animated: true, completion: nil)
     }
@@ -953,7 +953,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         self.animateViewMoving(false, moveValue: 110, view: view)
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         if textField.isEqual(self.origenText) && (textField.text?.count)! > 1{
             self.EnviarSolBtn.isEnabled = true
         }
@@ -1009,7 +1009,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
         exit(3)
     }
     @IBAction func RelocateBtn(_ sender: Any) {
-        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: (self.coreLocationManager.location?.coordinate)!, span: span)
         self.mapaVista.setRegion(region, animated: true)
     }
@@ -1113,7 +1113,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, MKMapViewDe
 //EXTENSION PARA CREAR EL SUBRAYADO EN LOS TEXTFIELDS
 extension UITextField {
     func setBottomBorder(borderColor: UIColor) {
-        self.borderStyle = UITextBorderStyle.none
+        self.borderStyle = UITextField.BorderStyle.none
         self.backgroundColor = UIColor.clear
         let width = 1.0
         let borderLine = UIView()
@@ -1126,28 +1126,28 @@ extension UITextField {
 extension MKMapView {
     /// when we call this function, we have already added the annotations to the map, and just want all of them to be displayed.
     func fitAll() {
-        var zoomRect            = MKMapRectNull;
+        var zoomRect            = MKMapRect.null;
         for annotation in annotations {
-            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
-            let pointRect       = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.01, 0.01)
-            zoomRect            = MKMapRectUnion(zoomRect, pointRect);
+            let annotationPoint = MKMapPoint.init(annotation.coordinate)
+            let pointRect       = MKMapRect.init(x: annotationPoint.x, y: annotationPoint.y, width: 0.01, height: 0.01)
+            zoomRect            = zoomRect.union(pointRect);
         }
-        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(100, 100, 100, 100), animated: true)
+        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets.init(top: 100, left: 100, bottom: 100, right: 100), animated: true)
     }
     
     /// we call this function and give it the annotations we want added to the map. we display the annotations if necessary
     func fitAll(in annotations: [MKAnnotation], andShow show: Bool) {
         
-        var zoomRect:MKMapRect  = MKMapRectNull
+        var zoomRect:MKMapRect  = MKMapRect.null
         
         for annotation in annotations {
-            let aPoint          = MKMapPointForCoordinate(annotation.coordinate)
-            let rect            = MKMapRectMake(aPoint.x, aPoint.y, 0.071, 0.071)
+            let aPoint          = MKMapPoint.init(annotation.coordinate)
+            let rect            = MKMapRect.init(x: aPoint.x, y: aPoint.y, width: 0.071, height: 0.071)
             
-            if MKMapRectIsNull(zoomRect) {
+            if zoomRect.isNull {
                 zoomRect = rect
             } else {
-                zoomRect = MKMapRectUnion(zoomRect, rect)
+                zoomRect = zoomRect.union(rect)
             }
         }
         if(show) {

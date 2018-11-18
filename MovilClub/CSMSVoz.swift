@@ -24,7 +24,8 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
     var responseData = NSMutableData()
     var data: Data!
     var reproduciendo = false
-
+    //var AudioSetCategory: AVAudioSetCategory = AVAudioSetCategory()
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -49,20 +50,30 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
             AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
                 if granted {
                     //set category and activate recorder session
-                    try! self.recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+                    //self.AudioSetCategory.setAudio(self.recordingSession)
                     try! self.recordingSession.setActive(true)
+                    /*if #available(iOS 10.0, *) {
+                     try! self.recordingSession.setCategory(.playAndRecord, mode: .default)
+                     try! self.recordingSession.setActive(true)
+                     } else {
+                     // Fallback on earlier versions
+                     }*/
                     
                     let recordSettings = [AVSampleRateKey : NSNumber(value: Float(8000.0) as Float),
-                        AVFormatIDKey : NSNumber(value: Int32(kAudioFormatMPEG4AAC) as Int32),
-                        AVNumberOfChannelsKey : NSNumber(value: 1 as Int32),
-                        AVEncoderAudioQualityKey : NSNumber(value: Int32(AVAudioQuality.low.rawValue) as Int32)]
+                                          AVFormatIDKey : NSNumber(value: Int32(kAudioFormatMPEG4AAC) as Int32),
+                                          AVNumberOfChannelsKey : NSNumber(value: 1 as Int32),
+                                          AVEncoderAudioQualityKey : NSNumber(value: Int32(AVAudioQuality.low.rawValue) as Int32)]
                     
                     let audioSession = AVAudioSession.sharedInstance()
                     do {
-                        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-                        try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
-                            settings: recordSettings)
-                        self.audioRecorder.prepareToRecord()
+                        if #available(iOS 10.0, *) {
+                            try audioSession.setCategory(.playAndRecord, mode: .default)
+                            try self.audioRecorder = AVAudioRecorder(url: self.directoryURL()!,
+                                                                     settings: recordSettings)
+                            self.audioRecorder.prepareToRecord()
+                        } else {
+                            // Fallback on earlier versions
+                        }
                     } catch {
                         
                     }
@@ -72,13 +83,18 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
                 }
             })
         }
-        
     }
-
+    
+    /*func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+     if !flag {
+     finishRecording(success: false)
+     }
+     }*/
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
+    
     // get the path of our file
     
     func directoryURL() -> URL? {
@@ -91,7 +107,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         //let soundURL = NSURL.fileURLWithPath(urls as String)
         return soundURL
     }
-
+    
     //para reproducir audio de internet
     func PlayForInternet(_ url: String){
         let url = url
@@ -123,7 +139,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
                 let filePath = NSHomeDirectory() + "/Library/Caches/Audio" + name
                 let audio = try? Data(contentsOf: directoryURL()!)
                 try? audio?.write(to: URL(fileURLWithPath: filePath), options: [.atomic])
-           
+                
             } catch {
             }
         }
@@ -138,11 +154,11 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
             } catch {
             }
         }else{
-
+            
         }
     }
     
-
+    
     func ReproducirVozConductor(_ url: String){
         //AUDIOSESSION
         do {
@@ -158,14 +174,14 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
             print("Nada de audio")
         }
         
-       /* let playerItem = AVPlayerItem(url: URL(string: url)!)
-        myPlayer = AVPlayer(playerItem:playerItem)
-        myPlayer.rate = 1.0
-        myPlayer.play()
-        
-        myPlayer = AVAudioPlayer(contentsOf: URL(string: url)!)
-        myPlayer.rate = 1.0
-        myPlayer.play()*/
+        /* let playerItem = AVPlayerItem(url: URL(string: url)!)
+         myPlayer = AVPlayer(playerItem:playerItem)
+         myPlayer.rate = 1.0
+         myPlayer.play()
+         
+         myPlayer = AVAudioPlayer(contentsOf: URL(string: url)!)
+         myPlayer.rate = 1.0
+         myPlayer.play()*/
     }
     
     func ReproducirMusica(){
@@ -198,7 +214,7 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         
         let filename = recordedFilePath ?? currentFilename
         let header = "Content-Disposition: form-data; name=\"uploadedfile\"; filename=\"\(currentFilename)\"\r\n"
-
+        
         let request = NSMutableURLRequest()
         request.url = sendToURL
         request.httpMethod = "POST"
@@ -227,4 +243,11 @@ class CSMSVoz: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, URL
         self.reproduciendo = false
     }
 }
-    
+
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+    return input.rawValue
+}
+
+

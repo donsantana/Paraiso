@@ -38,8 +38,13 @@ class CBackSMS: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, UR
         }
         do{
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(AVAudioSessionCategoryPlayback)
-            try session.setActive(true)
+            if #available(iOS 10.0, *) {
+                try session.setCategory(.playAndRecord, mode: .default)
+                try session.setActive(true)
+            } else {
+                // Fallback on earlier versions
+            }
+            
         }catch{
             print("Problem")
         }
@@ -91,3 +96,9 @@ class CBackSMS: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, UR
         self.ReproducirMusica()
     }
 }
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+    return input.rawValue
+}
+

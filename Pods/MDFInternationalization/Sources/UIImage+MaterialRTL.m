@@ -16,6 +16,9 @@
 
 #import "UIImage+MaterialRTL.h"
 
+#import <CoreGraphics/CoreGraphics.h>
+#import <CoreImage/CoreImage.h>
+
 /** Returns the horizontally flipped version of the given UIImageOrientation. */
 static UIImageOrientation MDFRTLMirroredOrientation(UIImageOrientation sourceOrientation) {
   switch (sourceOrientation) {
@@ -127,7 +130,7 @@ static UIImage *MDFRTLFlippedImage(UIImage *image) {
   // On iOS 10 and above, UIImage supports the imageWithHorizontallyFlippedOrientation method.
   // Otherwise, we manually manipulate the image.
   if ([self respondsToSelector:@selector(imageWithHorizontallyFlippedOrientation)]) {
-    //TODO(#22): Replace with @availability when we adopt Xcode 9 as our minimum supported version.
+    //TODO: (#22) Replace with @availability when we adopt Xcode 9 as our minimum supported version.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpartial-availability"
     return [self imageWithHorizontallyFlippedOrientation];

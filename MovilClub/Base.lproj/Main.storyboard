@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OLb-GV-Ecz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OLb-GV-Ecz">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Call Center-->
         <scene sceneID="Pdh-gR-gYB">
             <objects>
-                <tableViewController storyboardIdentifier="CallCenter" title="Call Center" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9PT-i1-nj4" customClass="CallCenterController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CallCenter" title="Call Center" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9PT-i1-nj4" customClass="CallCenterController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="hsc-os-T6Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CallCenter" rowHeight="85" id="Szn-FB-lNh" customClass="CallCenterViewCell" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CallCenter" rowHeight="85" id="Szn-FB-lNh" customClass="CallCenterViewCell" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Szn-FB-lNh" id="WlR-AB-fjV">
@@ -44,7 +40,7 @@
         <!--MovilClub-->
         <scene sceneID="eK2-LQ-1YZ">
             <objects>
-                <viewController storyboardIdentifier="Inicio" title="MovilClub" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Inicio" title="MovilClub" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FtK-GF-p1N" customClass="InicioController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WVd-rl-qxu"/>
                         <viewControllerLayoutGuide type="bottom" id="El1-Lb-Y4L"/>
@@ -132,7 +128,7 @@
                                 </connections>
                             </button>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="origen2" translatesAutoresizingMaskIntoConstraints="NO" id="1ja-NQ-35U">
-                                <rect key="frame" x="147.66666666666666" y="362" width="79" height="148"/>
+                                <rect key="frame" x="148" y="362" width="79" height="148"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="1Qg-da-hug"/>
                                     <constraint firstAttribute="height" constant="148" id="8OR-5j-xHH"/>
@@ -424,7 +420,7 @@
         <!--Solicitudes-->
         <scene sceneID="vqW-lI-YGK">
             <objects>
-                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListaSolPdtes" title="Solicitudes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SrG-Zu-b3x" customClass="SolicitudesTableController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="jR4-hK-gSX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +448,7 @@
         <!--Detalles  de Solicitud-->
         <scene sceneID="vzc-Mc-GKZ">
             <objects>
-                <viewController storyboardIdentifier="SolPendientes" title="Detalles  de Solicitud" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SolPendientes" title="Detalles  de Solicitud" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1BQ-9B-H05" customClass="SolPendController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGh-Zz-UZs"/>
                         <viewControllerLayoutGuide type="bottom" id="2xZ-Pt-Tdi"/>
@@ -575,7 +571,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JIj-iD-zeI" userLabel="Cancelar Solicitud">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="45.333333333333336"/>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.0078431372550000003" blue="0.1019607843" alpha="0.70068687080536918" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45.329999999999998" id="uKq-y1-bM8"/>
@@ -646,7 +642,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCc-zz-NUO" customClass="CSAnimationView">
-                                        <rect key="frame" x="38" y="192" width="300" height="350"/>
+                                        <rect key="frame" x="37.666666666666657" y="192" width="300" height="350"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datos del Vehículo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQt-7a-9ck">
                                                 <rect key="frame" x="34" y="8" width="208" height="31"/>
@@ -797,7 +793,7 @@
         <!--Login Controller-->
         <scene sceneID="wbQ-9n-mnB">
             <objects>
-                <viewController storyboardIdentifier="LoginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hfw-2h-ckP" customClass="LoginController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hfw-2h-ckP" customClass="LoginController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="siB-RR-f39"/>
                         <viewControllerLayoutGuide type="bottom" id="jGx-tr-7JY"/>
@@ -812,55 +808,11 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginImagen" translatesAutoresizingMaskIntoConstraints="NO" id="UkE-jC-J0e">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AK7-6b-DVs">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdK-aK-jY4">
-                                                <rect key="frame" x="87" y="260.33333333333331" width="201" height="107.33333333333331"/>
-                                                <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="moE-0E-toH">
-                                                        <rect key="frame" x="90.666666666666657" y="43.666666666666686" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="moE-0E-toH" secondAttribute="height" multiplier="1:1" id="vqL-dv-DCm"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.98257499930000003" green="0.93499225379999995" blue="0.35502547029999998" alpha="0.83153313760000003" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </activityIndicatorView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Autenticando..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0g-Wc-kkv">
-                                                        <rect key="frame" x="54" y="91" width="133" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="t0g-Wc-kkv" secondAttribute="height" multiplier="19:3" id="xgn-hB-eD7"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="t0g-Wc-kkv" secondAttribute="bottom" constant="-4.6666666666666856" id="3mG-wH-YWV"/>
-                                                    <constraint firstItem="moE-0E-toH" firstAttribute="centerY" secondItem="bdK-aK-jY4" secondAttribute="centerY" id="5bo-JW-Gd5"/>
-                                                    <constraint firstItem="moE-0E-toH" firstAttribute="centerX" secondItem="bdK-aK-jY4" secondAttribute="centerX" id="Ekb-sw-xwP"/>
-                                                    <constraint firstAttribute="width" secondItem="bdK-aK-jY4" secondAttribute="height" multiplier="15:8" id="IT3-De-GNe"/>
-                                                    <constraint firstItem="t0g-Wc-kkv" firstAttribute="centerX" secondItem="bdK-aK-jY4" secondAttribute="centerX" constant="20" id="Is8-cg-YP4"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.83963401845637586" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="leading" secondItem="AK7-6b-DVs" secondAttribute="leading" constant="87" id="Ri1-2c-n7p"/>
-                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="centerX" secondItem="AK7-6b-DVs" secondAttribute="centerX" id="Uzu-BC-flz"/>
-                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="centerY" secondItem="AK7-6b-DVs" secondAttribute="centerY" constant="-31" id="ySR-Qb-EUM"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njr-cc-0nA">
-                                        <rect key="frame" x="19" y="274.66666666666669" width="336" height="247.00000000000006"/>
+                                        <rect key="frame" x="19" y="274.33333333333331" width="337" height="247.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpk-3P-22Y">
-                                                <rect key="frame" x="75.666666666666686" y="103" width="184" height="40"/>
+                                                <rect key="frame" x="76.666666666666686" y="104" width="184" height="40"/>
                                                 <color key="backgroundColor" red="0.38802331686019897" green="0.38442200422286987" blue="0.37989339232444763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="jty-xD-NoX"/>
@@ -880,7 +832,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPK-yT-koI">
-                                                <rect key="frame" x="75.666666666666686" y="159.99999999999994" width="184" height="30"/>
+                                                <rect key="frame" x="76.666666666666686" y="161.00000000000006" width="184" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="qft-dM-2hu"/>
                                                     <constraint firstAttribute="width" constant="184" id="xeK-Or-80M"/>
@@ -894,7 +846,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfl-5K-l8k">
-                                                <rect key="frame" x="75.666666666666686" y="197.99999999999994" width="184" height="30"/>
+                                                <rect key="frame" x="76.666666666666686" y="199.00000000000006" width="184" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="a4h-DB-hH8"/>
                                                     <constraint firstAttribute="height" constant="30" id="exE-gm-gmk"/>
@@ -908,7 +860,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7U0-nA-zVm" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="75.666666666666686" y="45" width="184" height="39"/>
+                                                <rect key="frame" x="76.666666666666686" y="46" width="184" height="39"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="rHd-gn-bFI"/>
                                                     <constraint firstAttribute="height" constant="39" id="txh-A2-5ha"/>
@@ -926,7 +878,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Número de Teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-Dm-Ry2" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="75.666666666666686" y="-5" width="184" height="42"/>
+                                                <rect key="frame" x="76.666666666666686" y="-4" width="184" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="bRK-Io-Fu8"/>
                                                     <constraint firstAttribute="width" constant="184" id="dSm-Tl-4Fm"/>
@@ -962,10 +914,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHN-io-YOD">
-                                                <rect key="frame" x="48" y="208.33333333333334" width="278" height="273.33333333333326"/>
+                                                <rect key="frame" x="48.666666666666657" y="208.33333333333334" width="277.66666666666674" height="273.33333333333326"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuperación de clave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xar-Lf-KtE">
-                                                        <rect key="frame" x="26" y="29" width="219" height="27"/>
+                                                        <rect key="frame" x="26.000000000000014" y="29" width="218.66666666666669" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="RqH-3s-9fT"/>
                                                         </constraints>
@@ -974,7 +926,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6P2-Mx-Q2k">
-                                                        <rect key="frame" x="8" y="65" width="262" height="104"/>
+                                                        <rect key="frame" x="8" y="65" width="261.66666666666669" height="104"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="6P2-Mx-Q2k" secondAttribute="height" multiplier="139:50" constant="-27.120000000000005" id="OT2-6b-1Xl"/>
                                                         </constraints>
@@ -990,7 +942,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Número de teléfono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cH3-hR-Ij8" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                                        <rect key="frame" x="19" y="168.66666666666669" width="239" height="38.666666666666657"/>
+                                                        <rect key="frame" x="19.000000000000014" y="168.66666666666669" width="238.66666666666669" height="38.666666666666657"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="cH3-hR-Ij8" secondAttribute="height" multiplier="139:15" constant="-119.31111111111107" id="VdA-xx-AnF"/>
                                                         </constraints>
@@ -1010,7 +962,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mK-mV-BAe">
-                                                        <rect key="frame" x="141.66666666666666" y="229.33333333333331" width="118.33333333333334" height="30"/>
+                                                        <rect key="frame" x="141.66666666666669" y="229.33333333333331" width="118" height="30"/>
                                                         <color key="backgroundColor" red="0.1333333333" green="0.56862745100000001" blue="0.16078431369999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="9mK-mV-BAe" secondAttribute="height" multiplier="138:35" id="RnQ-ck-kUy"/>
@@ -1083,6 +1035,50 @@
                                             <constraint firstItem="VHN-io-YOD" firstAttribute="centerY" secondItem="qDd-3b-9wq" secondAttribute="centerY" id="pc4-Jv-5oS"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AK7-6b-DVs">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdK-aK-jY4">
+                                                <rect key="frame" x="87" y="260.33333333333331" width="201" height="107.33333333333331"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="moE-0E-toH">
+                                                        <rect key="frame" x="90.666666666666657" y="43.666666666666686" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="moE-0E-toH" secondAttribute="height" multiplier="1:1" id="vqL-dv-DCm"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.98257499930000003" green="0.93499225379999995" blue="0.35502547029999998" alpha="0.83153313760000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Autenticando..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0g-Wc-kkv">
+                                                        <rect key="frame" x="54" y="91" width="133" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="t0g-Wc-kkv" secondAttribute="height" multiplier="19:3" id="xgn-hB-eD7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="t0g-Wc-kkv" secondAttribute="bottom" constant="-4.6666666666666856" id="3mG-wH-YWV"/>
+                                                    <constraint firstItem="moE-0E-toH" firstAttribute="centerY" secondItem="bdK-aK-jY4" secondAttribute="centerY" id="5bo-JW-Gd5"/>
+                                                    <constraint firstItem="moE-0E-toH" firstAttribute="centerX" secondItem="bdK-aK-jY4" secondAttribute="centerX" id="Ekb-sw-xwP"/>
+                                                    <constraint firstAttribute="width" secondItem="bdK-aK-jY4" secondAttribute="height" multiplier="15:8" id="IT3-De-GNe"/>
+                                                    <constraint firstItem="t0g-Wc-kkv" firstAttribute="centerX" secondItem="bdK-aK-jY4" secondAttribute="centerX" constant="20" id="Is8-cg-YP4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.83963401845637586" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="leading" secondItem="AK7-6b-DVs" secondAttribute="leading" constant="87" id="Ri1-2c-n7p"/>
+                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="centerX" secondItem="AK7-6b-DVs" secondAttribute="centerX" id="Uzu-BC-flz"/>
+                                            <constraint firstItem="bdK-aK-jY4" firstAttribute="centerY" secondItem="AK7-6b-DVs" secondAttribute="centerY" constant="-31" id="ySR-Qb-EUM"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="njr-cc-0nA" firstAttribute="leading" secondItem="6H9-Qq-kbf" secondAttribute="leading" constant="19" id="7XM-DJ-XB9"/>
@@ -1137,7 +1133,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbw-tP-Hym">
-                                                <rect key="frame" x="172.66666666666666" y="417.33333333333337" width="124.33333333333334" height="32.333333333333314"/>
+                                                <rect key="frame" x="172.66666666666666" y="417.33333333333337" width="123.33333333333334" height="32.333333333333314"/>
                                                 <color key="backgroundColor" red="0.1333333333" green="0.56862745100000001" blue="0.16078431369999999" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Lbw-tP-Hym" secondAttribute="height" multiplier="23:6" id="Yj0-id-tFd"/>
@@ -1381,7 +1377,7 @@
         <!--Completada Controller-->
         <scene sceneID="N6H-9C-unt">
             <objects>
-                <viewController restorationIdentifier="completadaView" storyboardIdentifier="completadaView" id="OHb-6k-Inl" customClass="CompletadaController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="completadaView" storyboardIdentifier="completadaView" id="OHb-6k-Inl" customClass="CompletadaController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Re1-kF-L1e"/>
                         <viewControllerLayoutGuide type="bottom" id="7Qo-st-JEU"/>
@@ -1543,7 +1539,7 @@
         <!--Editar Perfil-->
         <scene sceneID="PrY-4k-9Ed">
             <objects>
-                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="UnTaxi_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Perfil" title="Editar Perfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d0f-sE-lC7" customClass="PerfilController" customModule="MovilClub_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KaE-Hi-dse"/>
                         <viewControllerLayoutGuide type="bottom" id="Sgb-Bh-Jll"/>
@@ -1681,10 +1677,10 @@
         <image name="chofer.png" width="150" height="150"/>
         <image name="clave" width="38" height="38"/>
         <image name="compartir" width="48" height="48"/>
-        <image name="detalles" width="160" height="66"/>
+        <image name="detalles" width="240" height="100"/>
         <image name="llamar.png" width="50" height="50"/>
         <image name="locationBtn" width="30" height="30"/>
-        <image name="loginImagen" width="408" height="736"/>
+        <image name="loginImagen" width="918.75" height="1656"/>
         <image name="mensajes.png" width="50" height="50"/>
         <image name="origen2" width="30" height="60"/>
         <image name="salir2" width="38" height="38"/>

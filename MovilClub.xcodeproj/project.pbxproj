@@ -74,7 +74,6 @@
 		B58CEB5C1E71D62100CFBC0F /* Perfil3ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58CEB5A1E71D62100CFBC0F /* Perfil3ViewCell.swift */; };
 		B58CEB5D1E71D62100CFBC0F /* Perfil3ViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58CEB5B1E71D62100CFBC0F /* Perfil3ViewCell.xib */; };
 		B58F1E5E1E635D2B008F07AC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F1E5D1E635D2B008F07AC /* LoginController.swift */; };
-		B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F1E611E638A9B008F07AC /* CSocket.swift */; };
 		B5B2ACAA1D5D0BF700361D73 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5B2ACA91D5D0BF700361D73 /* Launch Screen.storyboard */; };
 		B5D7FA7C1E84244D00333B59 /* detallesT@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5D7FA7B1E84244D00333B59 /* detallesT@3x.png */; };
 		B5E5BD8F1E95684F0093409F /* CBackSMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5BD8E1E95684F0093409F /* CBackSMS.swift */; };
@@ -205,7 +204,6 @@
 		B58CEB5A1E71D62100CFBC0F /* Perfil3ViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Perfil3ViewCell.swift; path = Views/Perfil3ViewCell.swift; sourceTree = "<group>"; };
 		B58CEB5B1E71D62100CFBC0F /* Perfil3ViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Perfil3ViewCell.xib; path = Views/Perfil3ViewCell.xib; sourceTree = "<group>"; };
 		B58F1E5D1E635D2B008F07AC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controllers/LoginController.swift; sourceTree = "<group>"; };
-		B58F1E611E638A9B008F07AC /* CSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSocket.swift; sourceTree = "<group>"; };
 		B5B2ACA91D5D0BF700361D73 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B5BF37841DDCB48400301DA4 /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = "../../../../../Users/dsantana/Library/Developer/Xcode/DerivedData/UnTaxi-bhdseouykvmypecitlgrgswqblii/Build/Products/Debug-iphonesimulator/Socket.IO-Client-Swift/SocketIO.framework"; sourceTree = "<group>"; };
 		B5D7FA7B1E84244D00333B59 /* detallesT@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "detallesT@3x.png"; sourceTree = "<group>"; };
@@ -461,7 +459,6 @@
 		B58F1E601E638A2D008F07AC /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				B58F1E611E638A9B008F07AC /* CSocket.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -527,7 +524,7 @@
 					84F571421BCE958200FC18D5 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 48G34LX7UB;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -681,7 +678,7 @@
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/StarscreamSocketIO/StarscreamSocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
@@ -692,7 +689,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StarscreamSocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
@@ -736,7 +733,6 @@
 				B528CE0D1E85E3E10045A8DA /* SolViewCell.swift in Sources */,
 				B5EE74FA1D5D649300DC8D77 /* CTelefono.swift in Sources */,
 				845AADE11C543B8700D4FFA4 /* CTaxi.swift in Sources */,
-				B58F1E621E638A9B008F07AC /* CSocket.swift in Sources */,
 				84F22CA81CDC117300CDC432 /* CSMSVoz.swift in Sources */,
 				84C8E9261C82566C00F21E0B /* LocationManager.swift in Sources */,
 				84FEE8921CC403630095C322 /* CTarifa.swift in Sources */,
@@ -890,7 +886,8 @@
 				PRODUCT_NAME = MovilClub.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -926,7 +923,8 @@
 				PRODUCT_NAME = MovilClub.temp_caseinsensitive_rename;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
