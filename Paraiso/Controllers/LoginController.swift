@@ -17,6 +17,8 @@ class LoginController: UIViewController, UITextFieldDelegate{
     var EnviosCount = 0
     var emitTimer = Timer()
     
+    let manager = SocketManager(socketURL: URL(string: "http://173.249.14.205:6017")!, config: [.log(true), .forcePolling(true)])
+    
     //MARK:- VARIABLES INTERFAZ
     
     @IBOutlet weak var Usuario: UITextField!
@@ -56,7 +58,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
         
         if CConexionInternet.isConnectedToNetwork() == true{
            
-            myvariables.socket = SocketIOClient(socketURL: URL(string: "http://173.249.14.205:6017")!, config: [.log(false), .forcePolling(true)])
+            myvariables.socket = self.manager.defaultSocket
             myvariables.socket.connect()
             print("Tratando de conectar")
 
@@ -227,8 +229,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            print(myvariables.socket.reconnects)
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 myvariables.socket.emit("data",datos)
                 self.EnviarTimer(estado: 1, datos: datos)
             }
@@ -247,7 +248,7 @@ class LoginController: UIViewController, UITextFieldDelegate{
     
     @objc func EnviarSocket1(_ timer: Timer){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+            if myvariables.socket.status.active && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
                 var datos: String = (userInfo["datos"] as! String)

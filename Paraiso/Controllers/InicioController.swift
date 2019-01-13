@@ -372,7 +372,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
             self.SolPendImage.isHidden = false
         }
         
-        if myvariables.socket.reconnects{
+        if myvariables.socket.status.active{
             let ColaHilos = OperationQueue()
             let Hilos : BlockOperation = BlockOperation ( block: {
                 self.SocketEventos()
@@ -781,7 +781,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
         }
         
         myvariables.socket.on("disconnect"){data, ack in
-            self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(PantallaInicio.Reconect), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(InicioController.Reconect), userInfo: nil, repeats: true)
         }
         
         myvariables.socket.on("connect"){data, ack in
@@ -892,7 +892,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     func EnviarSocket(_ datos: String){
         
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 myvariables.socket.emit("data",datos)
             }
             else{
@@ -911,7 +911,7 @@ class InicioController: UIViewController, CLLocationManagerDelegate, UITextViewD
     @objc func EnviarSocket1(_ timer: Timer){
        
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects && self.EnviosCount <= 3 {
+            if myvariables.socket.status.active && self.EnviosCount <= 3 {
                 self.EnviosCount += 1
                 let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
                 var datos = (userInfo["datos"] as! String)

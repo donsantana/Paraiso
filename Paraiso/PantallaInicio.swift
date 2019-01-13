@@ -944,7 +944,7 @@ class PantallaInicio: UIViewController, CLLocationManagerDelegate, UITextViewDel
     //FUNCIÓN ENVIAR AL SOCKET
     func EnviarSocket(_ datos: String){
         if CConexionInternet.isConnectedToNetwork() == true{
-            if myvariables.socket.reconnects{
+            if myvariables.socket.status.active{
                 myvariables.socket.emit("data",datos)
             }
             else{
