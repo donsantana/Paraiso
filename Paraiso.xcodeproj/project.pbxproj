@@ -117,16 +117,10 @@
 /* Begin PBXFileReference section */
 		07250EAECBF2EEDC976A21B4 /* Pods-Paraiso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paraiso.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paraiso/Pods-Paraiso.release.xcconfig"; sourceTree = "<group>"; };
 		0F3601B85A9F13F4AB6A779B /* Pods_MovilClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovilClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 		2565B84F17546B1986F8E5CE /* Pods_Conaitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Conaitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF0C2426F6DCCE3CFCBBE81 /* Pods_Taxi_Paraiso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Taxi_Paraiso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33FDDB56E65D607314223F80 /* Pods-MovilClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovilClub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovilClub/Pods-MovilClub.release.xcconfig"; sourceTree = "<group>"; };
-		4E03901BF492BB3D6AE5865F /* Pods-MovilClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovilClub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovilClub/Pods-MovilClub.debug.xcconfig"; sourceTree = "<group>"; };
 		5580EDF6C10C26213C4B612A /* Pods_Rocostcar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rocostcar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F732CCD5BFAE09F769D4DA5 /* Pods-Conaitor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conaitor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Conaitor/Pods-Conaitor.debug.xcconfig"; sourceTree = "<group>"; };
 		614803C5DB936BE9A78397E5 /* Pods_UnTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E52795270F7B061703EEC8B /* Pods-Taxi Paraiso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taxi Paraiso.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taxi Paraiso/Pods-Taxi Paraiso.release.xcconfig"; sourceTree = "<group>"; };
-		7C15DCF5E400960D1CD404E1 /* Pods-Conaitor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conaitor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Conaitor/Pods-Conaitor.release.xcconfig"; sourceTree = "<group>"; };
 		845AADE01C543B8500D4FFA4 /* CTaxi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTaxi.swift; sourceTree = "<group>"; };
 		845AADE21C543CC400D4FFA4 /* CConductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CConductor.swift; sourceTree = "<group>"; };
 		845C0F511C7633EF0050F852 /* chofer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chofer.png; sourceTree = "<group>"; };
@@ -180,7 +174,6 @@
 		84F7E3841CB38C04008D4713 /* stardorada.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stardorada.png; sourceTree = "<group>"; };
 		84FC7EDF1BEA6DE50068007B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Pods/GoogleMaps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		84FEE8911CC403630095C322 /* CTarifa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTarifa.swift; sourceTree = "<group>"; };
-		9CDA738E893C604E323DC8DF /* Pods-Taxi Paraiso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taxi Paraiso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taxi Paraiso/Pods-Taxi Paraiso.debug.xcconfig"; sourceTree = "<group>"; };
 		AF07D6831FE4B8C000220E64 /* Pods_Rocostcar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Rocostcar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFDB851820D1FE0E00481CFA /* CompletadaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletadaController.swift; sourceTree = "<group>"; };
 		B50482A01E6883B100D5236C /* InicioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InicioController.swift; path = Controllers/InicioController.swift; sourceTree = "<group>"; };
@@ -247,10 +240,7 @@
 		B5FB646B1D1C60C3006A2C70 /* Taximetrocopia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taximetrocopia.png; sourceTree = "<group>"; };
 		C60385842213C7F400130EB9 /* InicioControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioControllerExtension.swift; sourceTree = "<group>"; };
 		CF81F28FEC8ECA26A8107E52 /* Pods_Paraiso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paraiso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5321FEB68A85FD4C4AF4363 /* Pods-Rocostcar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rocostcar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rocostcar/Pods-Rocostcar.debug.xcconfig"; sourceTree = "<group>"; };
-		E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnTaxi/Pods-UnTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		F2DA71888DFD806A6A374B81 /* Pods-Paraiso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paraiso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paraiso/Pods-Paraiso.debug.xcconfig"; sourceTree = "<group>"; };
-		F690704D10F6BCFA34361C23 /* Pods-Rocostcar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rocostcar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rocostcar/Pods-Rocostcar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,16 +478,6 @@
 		CE1476283A03C36D4A975E6E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				24909F60B24CA2D8F0CE494E /* Pods-UnTaxi.debug.xcconfig */,
-				E4C283DE81EEC8E693B9501F /* Pods-UnTaxi.release.xcconfig */,
-				D5321FEB68A85FD4C4AF4363 /* Pods-Rocostcar.debug.xcconfig */,
-				F690704D10F6BCFA34361C23 /* Pods-Rocostcar.release.xcconfig */,
-				9CDA738E893C604E323DC8DF /* Pods-Taxi Paraiso.debug.xcconfig */,
-				6E52795270F7B061703EEC8B /* Pods-Taxi Paraiso.release.xcconfig */,
-				5F732CCD5BFAE09F769D4DA5 /* Pods-Conaitor.debug.xcconfig */,
-				7C15DCF5E400960D1CD404E1 /* Pods-Conaitor.release.xcconfig */,
-				4E03901BF492BB3D6AE5865F /* Pods-MovilClub.debug.xcconfig */,
-				33FDDB56E65D607314223F80 /* Pods-MovilClub.release.xcconfig */,
 				F2DA71888DFD806A6A374B81 /* Pods-Paraiso.debug.xcconfig */,
 				07250EAECBF2EEDC976A21B4 /* Pods-Paraiso.release.xcconfig */,
 			);

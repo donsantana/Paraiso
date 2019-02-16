@@ -40,7 +40,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) requiere acceder a su localización para encontrar los taxis más cercanos.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) requiere acceder al microfono para enviar mensaje al conductor.</string>
+	<string>$(PRODUCT_NAME) requiere acceder al microfono para enviar mensaje de audio al conductor.</string>
 	<key>NSZombieEnabled</key>
 	<string>YES</string>
 	<key>UIAppFonts</key>
