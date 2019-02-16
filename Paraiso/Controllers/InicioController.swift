@@ -308,17 +308,17 @@ class InicioController: UIViewController, URLSessionDelegate, URLSessionTaskDele
         
         //Evento Posicion de taxis
         myvariables.socket.on("Posicion"){data, ack in
-            print("data \(data)")
             let temporal = String(describing: data).components(separatedBy: ",")
             print("posicion \(temporal)")
             //self.MensajeEspera.text = String(temporal)
             //self.AlertaEsperaView.hidden = false
             if(temporal[1] == "0") {
-                
+                self.origenText.endEditing(true)
+                self.formularioSolicitud.isHidden = true
+                self.Inicio()
                 let alertaDos = UIAlertController(title: "Solicitud de Taxi", message: "No hay taxis disponibles en este momento, espere unos minutos y vuelva a intentarlo.", preferredStyle: UIAlertController.Style.alert )
                 alertaDos.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: {alerAction in
-                    self.formularioSolicitud.isHidden = true
-                    self.Inicio()
+
                 }))
                 
                 self.present(alertaDos, animated: true, completion: nil)
