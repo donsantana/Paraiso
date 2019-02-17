@@ -1,0 +1,6 @@
+framework module Pods_AndyTaxi {
+  umbrella header "Pods-AndyTaxi-umbrella.h"
+
+  export *
+  module * { export * }
+}

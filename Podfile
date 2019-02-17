@@ -2,7 +2,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
-target "Paraiso" do
+target "AndyTaxi" do
     pod 'Socket.IO-Client-Swift'
     pod 'Canvas'
     pod 'AFNetworking'
